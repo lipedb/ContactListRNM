@@ -1,11 +1,14 @@
 // App.tsx
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import ContactsScreen from './src/screens/ContactsScreen';
 import InformationScreen from './src/screens/InformationScreen';
+import LiveSwitch from './src/components/LiveSwitch';
+import { LiveSwitchState } from './src/models/LiveSwitchState';
+import { updateLiveState } from './src/updates/LiveSwitchUpdate';
 
 // Create a Tab Navigator
 const Tab = createBottomTabNavigator();
@@ -28,12 +31,21 @@ type IconName =
  * @returns {JSX.Element} The rendered app component with navigation.
  */
 const App: React.FC = () => {
+  // Initialize Live switch state
+  const [liveSwitchState, setLiveSwitchState] = useState<LiveSwitchState>({ isLive: false }); 
+
+  // Function to handle toggle
+  const handleToggle = () => {
+    setLiveSwitchState(prevState => updateLiveState(prevState, 'TOGGLE_LIVE')); // Update the Live switch state
+  };
+
   return (
     <NavigationContainer>
+      <LiveSwitch state={liveSwitchState} onToggle={handleToggle} />
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
-            let iconName: IconName = 'people-outline'; // Use the defined IconName type
+            let iconName: IconName; // Use the defined IconName type
 
             // Determine the icon name based on the current route using switch
             switch (route.name) {
@@ -55,9 +67,17 @@ const App: React.FC = () => {
         })}
       >
         {/* Define the Contacts tab */}
-        <Tab.Screen name="Contacts" component={ContactsScreen} />
+        <Tab.Screen 
+          name="Contacts" 
+          component={ContactsScreen} 
+          options={{ headerShown: false }}
+        />
         {/* Define the Information tab */}
-        <Tab.Screen name="Information" component={InformationScreen} />
+        <Tab.Screen 
+        name="Information" 
+        component={InformationScreen}
+        options={{ headerShown: false }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
