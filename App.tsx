@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import ContactsScreen from './src/screens/ContactsScreen';
+import InformationScreen from './src/screens/InformationScreen';
 
 // Create a Tab Navigator
 const Tab = createBottomTabNavigator();
@@ -34,9 +35,16 @@ const App: React.FC = () => {
           tabBarIcon: ({ color, size }) => {
             let iconName: IconName = 'people-outline'; // Use the defined IconName type
 
-            // Determine the icon name based on the current route
-            if (route.name === 'Contacts') {
-              iconName = 'people-outline'; // Ionicons icon for Contacts
+            // Determine the icon name based on the current route using switch
+            switch (route.name) {
+              case 'Contacts':
+                iconName = 'people-outline'; // Ionicons icon for Contacts
+                break;
+              case 'Information':
+                iconName = 'information-circle-outline'; // Ionicons icon for Information
+                break;
+              default:
+                iconName = 'people-outline'; // Default icon if none match
             }
 
             // Return the icon component
@@ -48,6 +56,8 @@ const App: React.FC = () => {
       >
         {/* Define the Contacts tab */}
         <Tab.Screen name="Contacts" component={ContactsScreen} />
+        {/* Define the Information tab */}
+        <Tab.Screen name="Information" component={InformationScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
