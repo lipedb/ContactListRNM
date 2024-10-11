@@ -1,0 +1,37 @@
+[
+    {
+      "contactId": "111",
+      "firstName": "Isabella",
+      "lastName": "Clark",
+      "phoneNumber": "+1-202-555-0201",
+      "emailAddress": "isabella.clark@example.com"
+    },
+    {
+      "contactId": "112",
+      "firstName": "Ethan",
+      "lastName": "Lewis",
+      "phoneNumber": "+1-202-555-0212",
+      "emailAddress": "ethan.lewis@example.com"
+    },
+    {
+      "contactId": "113",
+      "firstName": "Mia",
+      "lastName": "Walker",
+      "phoneNumber": "+1-202-555-0223",
+      "emailAddress": "mia.walker@example.com"
+    },
+    {
+      "contactId": "114",
+      "firstName": "Aiden",
+      "lastName": "Hall",
+      "phoneNumber": "+1-202-555-0234",
+      "emailAddress": "aiden.hall@example.com"
+    },
+    {
+      "contactId": "115",
+      "firstName": "Ava",
+      "lastName": "Allen",
+      "phoneNumber": "+1-202-555-0245",
+      "emailAddress": "ava.allen@example.com"
+    }
+  ]  
