@@ -1,5 +1,3 @@
-// src/screens/InformationScreen.tsx
-
 import React from 'react';
 import { View, Text } from 'react-native';
 import InformationStyles from '../styles/InformationStyles';
