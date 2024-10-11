@@ -20,7 +20,7 @@ const SelectButtonStyles = StyleSheet.create({
   },
   text: {
     color: 'tomato',           // Sets text color to tomato
-    fontSize: 16,              // Sets the font size to 16
+    fontSize: 20,              // Sets the font size to 16
     fontWeight: 'bold',        // Makes the text bold
   },
 });

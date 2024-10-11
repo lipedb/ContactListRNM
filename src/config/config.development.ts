@@ -1,3 +1,3 @@
 export const config = {
-    apiUrl: 'https://mpa8d47d80ec80ea1185.free.beeceptor.com',
+    apiUrl: 'https://run.mocky.io/v3/bfd3541e-8482-4f09-a7da-7cd3adda39da',
 };

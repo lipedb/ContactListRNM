@@ -19,7 +19,7 @@ const PhotoLetterView: React.FC<PhotoLetterViewProps> = ({ photoUrl, firstName }
       {photoUrl ? (
         <Image source={{ uri: photoUrl }} style={PhotoLetterViewStyles.image} />
       ) : (
-        <Text style={PhotoLetterViewStyles.initial}>{firstName.charAt(0).toUpperCase()}</Text>
+        <Text style={PhotoLetterViewStyles.initial}>{"(" + firstName.charAt(0).toUpperCase() + ")"}</Text>
       )}
     </View>
   );
