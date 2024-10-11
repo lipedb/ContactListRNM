@@ -59,7 +59,7 @@ const App: React.FC = () => {
                 iconName = 'people-outline'; // Default icon if none match
             }
 
-            // Return the icon component
+            // Return the icon componenta
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: 'tomato', // Active tab color
@@ -69,7 +69,7 @@ const App: React.FC = () => {
         {/* Define the Contacts tab */}
         <Tab.Screen 
           name="Contacts" 
-          component={ContactsScreen} 
+          children={() => <ContactsScreen liveSwitchState={liveSwitchState} />} 
           options={{ headerShown: false }}
         />
         {/* Define the Information tab */}

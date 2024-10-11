@@ -6,5 +6,6 @@ export interface Contact {
     firstName: string;      // First name of the contact
     lastName: string;       // Last name of the contact
     phoneNumber: string;    // Phone number of the contact
-    emailAddress: string;    // Email address of the contact
+    emailAddress: string;
+    photoUrl?: string | null;    // Email address of the contact
 }

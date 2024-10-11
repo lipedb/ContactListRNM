@@ -1,5 +1,3 @@
-// src/styles/InformationStyles.ts
-
 import { StyleSheet } from 'react-native';
 
 /**
