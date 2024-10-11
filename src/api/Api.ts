@@ -13,7 +13,10 @@ export const fetchLiveInformation = async (): Promise<Contact[]> => {
   if (!response.ok) {
     throw new Error('Failed to fetch live information');
   }
-  return response.json();
+  const responseData = response.json()
+  console.log("Live data: ")
+  console.log(responseData)
+  return responseData;
 };
 
 /**
@@ -22,6 +25,8 @@ export const fetchLiveInformation = async (): Promise<Contact[]> => {
  * @returns {Promise<Contact[]>} A promise that resolves to an array of Contact objects.
  */
 export const fetchMockedInformation = async (): Promise<Contact[]> => {
+  console.log("Mock data: ")
+  console.log(mockedContacts)
   return new Promise((resolve) => {
     setTimeout(() => resolve(mockedContacts), 1000); // Simulate network delay
   });
