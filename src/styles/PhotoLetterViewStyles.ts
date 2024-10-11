@@ -15,9 +15,9 @@ const PhotoLetterViewStyles = StyleSheet.create({
    */
   container: {
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     width: '100%',
-    height: '100%',
+    height: 25,
   },
   
   /**
@@ -35,7 +35,7 @@ const PhotoLetterViewStyles = StyleSheet.create({
    * Configures the font size and weight for better visibility.
    */
   initial: {
-    fontSize: 24, // Adjust based on your design
+    fontSize: 20, // Adjust based on your design
     fontWeight: 'bold',
   },
 });

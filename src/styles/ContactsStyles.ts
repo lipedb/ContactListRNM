@@ -17,7 +17,7 @@ import { StyleSheet } from 'react-native';
 const ContactsStyles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   text: {

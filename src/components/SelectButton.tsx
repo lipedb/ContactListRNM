@@ -18,7 +18,7 @@ const SelectButton: React.FC<SelectButtonProps> = ({ state, onPress }) => {
   return (
     <TouchableOpacity style={SelectButtonStyles.button} onPress={onPress}>
       <Text style={SelectButtonStyles.text}>
-        {state.isSelected ? 'Selected' : 'Select'}
+        {state.isSelected ? '✅' : '☑️'}
       </Text>
     </TouchableOpacity>
   );
