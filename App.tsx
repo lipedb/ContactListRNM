@@ -1,5 +1,3 @@
-// App.tsx
-
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -9,6 +7,7 @@ import InformationScreen from './src/screens/InformationScreen';
 import LiveSwitch from './src/components/LiveSwitch';
 import { LiveSwitchState } from './src/models/LiveSwitchState';
 import { updateLiveState } from './src/updates/LiveSwitchUpdate';
+import { SelectedContactsProvider } from './src/context/SelectedContactsContext';
 
 // Create a Tab Navigator
 const Tab = createBottomTabNavigator();
@@ -40,46 +39,48 @@ const App: React.FC = () => {
   };
 
   return (
-    <NavigationContainer>
-      <LiveSwitch state={liveSwitchState} onToggle={handleToggle} />
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            let iconName: IconName; // Use the defined IconName type
+    <SelectedContactsProvider>
+      <NavigationContainer>
+        <LiveSwitch state={liveSwitchState} onToggle={handleToggle} />
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color, size }) => {
+              let iconName: IconName; // Use the defined IconName type
 
-            // Determine the icon name based on the current route using switch
-            switch (route.name) {
-              case 'Contacts':
-                iconName = 'people-outline'; // Ionicons icon for Contacts
-                break;
-              case 'Information':
-                iconName = 'information-circle-outline'; // Ionicons icon for Information
-                break;
-              default:
-                iconName = 'people-outline'; // Default icon if none match
-            }
+              // Determine the icon name based on the current route using switch
+              switch (route.name) {
+                case 'Contacts':
+                  iconName = 'people-outline'; // Ionicons icon for Contacts
+                  break;
+                case 'Information':
+                  iconName = 'information-circle-outline'; // Ionicons icon for Information
+                  break;
+                default:
+                  iconName = 'people-outline'; // Default icon if none match
+              }
 
-            // Return the icon componenta
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'tomato', // Active tab color
-          tabBarInactiveTintColor: 'gray',  // Inactive tab color
-        })}
-      >
-        {/* Define the Contacts tab */}
-        <Tab.Screen 
-          name="Contacts" 
-          children={() => <ContactsScreen liveSwitchState={liveSwitchState} />} 
-          options={{ headerShown: false }}
-        />
-        {/* Define the Information tab */}
-        <Tab.Screen 
-        name="Information" 
-        component={InformationScreen}
-        options={{ headerShown: false }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+              // Return the icon component
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: 'tomato', // Active tab color
+            tabBarInactiveTintColor: 'gray',  // Inactive tab color
+          })}
+        >
+          {/* Define the Contacts tab */}
+          <Tab.Screen 
+            name="Contacts" 
+            children={() => <ContactsScreen liveSwitchState={liveSwitchState} />} 
+            options={{ headerShown: false }}
+          />
+          {/* Define the Information tab */}
+          <Tab.Screen 
+            name="Information" 
+            component={InformationScreen}
+            options={{ headerShown: false }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SelectedContactsProvider>
   );
 };
 
