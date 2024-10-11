@@ -17,10 +17,14 @@ RNM/
 ├── tsconfig.json             # TypeScript configuration
 ├── assets/                   # Images and other static assets
 └── src/                      # Main source code directory
-    ├── components/           # Reusable components
-    ├── screens/              # Application screens
-    ├── navigation/           # Navigation configuration
-    └── utils/                # Utility functions
+    ├── api/               # Handles communication with external APIs
+    ├── components/        # Reusable UI components
+    ├── config/            # Configuration settings (App settings, etc.)
+    ├── context/           # Context API for state management
+    ├── models/            # Data models or interfaces
+    ├── screens/           # Application screens (each representing a view or route)
+    ├── styles/            # Stylesheets or theming related files
+    └── updates/           # Functions for handling updates
 ```
 
 ## Project Architecture
