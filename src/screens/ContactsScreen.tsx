@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import ContactsStyles from '../styles/ContactsStyles'; // Adjusted to import from the new ContactsStyles
 import { fetchContacts } from '../api/Api'; // Import the fetchContacts function
 import { Contact } from '../models/Contact'; // Import the Contact type
@@ -56,7 +56,7 @@ const ContactsScreen: React.FC<ContactsScreenProps> = ({ liveSwitchState }) => {
   }, [liveSwitchState.isLive]); // Dependency array to trigger effect on state change
 
   return (
-    <View style={ContactsStyles.container}>
+    <ScrollView contentContainerStyle={ContactsStyles.container} keyboardShouldPersistTaps={'always'} >
       {/* StatusSnackBar for loading state */}
       <StatusSnackBar
         visible={loading}
@@ -73,30 +73,33 @@ const ContactsScreen: React.FC<ContactsScreenProps> = ({ liveSwitchState }) => {
 
       {contacts.length > 0 ? (
         contacts.map((contact) => (
-        <TouchableOpacity style={ContactsRowStyles.contactContainer}
-         key={contact.contactId}
-         onPress={() => toggleContactSelection(contact)}>
-        <View style={{marginRight: 9}}>
-            <PhotoLetterView
+          <TouchableOpacity
+            style={ContactsRowStyles.contactContainer}
+            key={contact.contactId}
+            onPress={() => toggleContactSelection(contact)}
+            activeOpacity={1}
+          >
+            <View style={{ marginRight: 9 }}>
+              <PhotoLetterView
                 photoUrl={contact.photoUrl || undefined} // Convert null to undefined
                 firstName={contact.firstName}
-            />
-        </View>
-        <View style={{flex: 1}}>
-            <Text style={{fontSize: 20}}>{contact.firstName}</Text>
-        </View>
-        <View style={{marginRight: 9}}>
-            <SelectButton
+              />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 20 }}>{contact.firstName}</Text>
+            </View>
+            <View style={{ marginRight: 9 }}>
+              <SelectButton
                 state={{ isSelected: selectedContactsState.selectedContacts.some(selected => selected.contactId === contact.contactId) }} 
                 onPress={() => toggleContactSelection(contact)} // Toggle selection on press
-                />
+              />
             </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
         ))
       ) : (
         !loading && <Text style={ContactsStyles.text}>No contacts available.</Text>
       )}
-    </View>
+    </ScrollView>
   );
 };
 

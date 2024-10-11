@@ -16,12 +16,18 @@ import { StyleSheet } from 'react-native';
  */
 const ContactsStyles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   text: {
     fontSize: 20,
+  },
+  centerText: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 48,
   },
 });
 

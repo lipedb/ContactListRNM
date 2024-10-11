@@ -1,12 +1,30 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import InformationStyles from '../styles/InformationStyles';
+import { ScrollView, View, Text } from 'react-native';
+import ContactsStyles from '../styles/ContactsStyles';
+import ContactCard from '../components/ContactCard'; // Ensure correct import
+import { useSelectedContacts } from '../context/SelectedContactsContext';
 
 const InformationScreen: React.FC = () => {
+  const { state: selectedContactsState } = useSelectedContacts();
+
   return (
-    <View style={InformationStyles.container}>
-      <Text style={InformationStyles.text}>Information Screen</Text>
-    </View>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'flex-start' }}>
+      {selectedContactsState.selectedContacts.length > 0 ? (
+        selectedContactsState.selectedContacts.map(contact => (
+          <ContactCard
+            key={contact.contactId} // Ensure this is unique
+            state={{
+              title: contact.firstName + " " + contact.lastName,
+              mail: contact.emailAddress || '',
+              phone: contact.phoneNumber || '',
+              imageUrl: contact.photoUrl || '',
+            }}
+          />
+        ))
+      ) : (
+        <Text style={ContactsStyles.centerText}>No selected contacts available.</Text>
+      )}
+    </ScrollView>
   );
 };
 
